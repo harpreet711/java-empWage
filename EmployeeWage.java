@@ -7,6 +7,7 @@ public class EmployeeWage {
 	static int fullDay = 8;
 	static int perHour = 20;
 	static int dailyWage = 0;
+	static int partTime = 8;
 
 	public static void main(String[] args) {
 		System.out.println("Welcome to Employee Wage Computation");
