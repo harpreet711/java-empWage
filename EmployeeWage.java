@@ -9,11 +9,12 @@ public class EmployeeWage {
 	static int dailyWage = 0;
 	static int partTime = 8;
 	static int perMonth = 20;
+	static int forMonth = 100;
 	
 	public static void main(String[] args) {
 		System.out.println("Welcome to Employee Wage Computation");
 		
-		switch (getEmployeeType()) {
+		switch (employeeType()) {
 		case "Full-time":
 			System.out.println("Employment: Full-time");
 			break;
@@ -25,7 +26,7 @@ public class EmployeeWage {
 		}
 		getDailywage();
 		System.out.println("Daily wage: " + dailyWage);
-		System.out.println("Wages for month: " + getWagesForMonth());		
+		System.out.println("Wages for month: " + wagesForMonth());		
 	}
 	
 	public static boolean employeeAttendance() {
@@ -37,17 +38,20 @@ public class EmployeeWage {
 		return dailyWage;
 	}
 	
-	private static String getEmployeeType() {
+	private static String employeeType() {
 		String[] arr = { "Full-time", "Part-time" };
 		return arr[new Random().nextInt(arr.length)];
 	}
 	
-	private static long getWagesForMonth() {
+	private static long wagesForMonth() {
 		long wages = 0;
-		for (int i = 1; i <= perMonth; i++) {
-			System.out.println("Day : " + i);
+		int workingHours = 0, workingDays = 0;
+		while (workingDays < perMonth && workingHours < forMonth) {
+			workingDays++;
+			System.out.println("Day : " + workingDays);
 			if (employeeAttendance()) {
 				System.out.println("Present");
+				workingHours += fullDay;
 				wages += dailyWage;
 			} else {
 				System.out.println("Absent");
