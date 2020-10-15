@@ -9,6 +9,7 @@ public class EmployeeWage {
 	private static int dailyWage = 0;
 	private static int daysPerMonth = 0;
 	private static int hoursPerMonth = 0;
+	private long monthlyWage;
 	
 	public EmployeeWage(String companyName, int dailyWage, int daysPerMonth, int hoursPerMonth) {
 		// TODO Auto-generated constructor stub
@@ -16,23 +17,7 @@ public class EmployeeWage {
 		this.dailyWage = dailyWage;
 		this.daysPerMonth = daysPerMonth;
 		this.hoursPerMonth = hoursPerMonth;
-	}
-
-	
-	public String companyName() {
-		return companyName;
-	}	
-	
-	
-	public static void main(String[] args) {
-
-		EmployeeWage amazon = new EmployeeWage("Amazon", 100, 10, 50);
-		EmployeeWage flipkart = new EmployeeWage("Flipkart", 200, 20, 100);
-
-		System.out.println("Monthly wage for an employee of company " + amazon.companyName() + " is "
-				+ amazon.wagesForMonth());
-		System.out.println("Monthly wage for an employee of company " + flipkart.companyName() + " is "
-				+ flipkart.wagesForMonth());
+		wagesForMonth();
 	}
 	
 	public static boolean employeeAttendance() {
@@ -51,5 +36,30 @@ public class EmployeeWage {
 		}
 		return wages;
 	}
+	
+	public String companyName() {
+		return companyName;
+	}	
+	
+	@Override
+	public String toString() {
+		return "Monthly wage for an employee of company " + companyName + " is " + monthlyWage;
+	}
+
+	
+	
+	public static void main(String[] args) {
+
+		EmployeeWage amazon = new EmployeeWage("Amazon", 100, 10, 50);
+		EmployeeWage flipkart = new EmployeeWage("Flipkart", 200, 20, 100);
+
+		amazon.wagesForMonth();
+		flipkart.wagesForMonth();
+
+		System.out.println(amazon);
+		System.out.println(flipkart);
+		
+	}	
+	
 }
 
